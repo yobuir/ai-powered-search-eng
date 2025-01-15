@@ -2,12 +2,14 @@ import { NextResponse } from "next/server";
 import OpenAI from "openai";
 import axios from "axios";
 import { productInsightsPrompt } from "@/prompts/ProductInsightsPrompt";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-// Handle POST requests
 export async function POST(req: Request) {
   try {
     const body = await req.json();
